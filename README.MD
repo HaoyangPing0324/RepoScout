@@ -39,6 +39,8 @@ $reposcout 探索 vllm-project/vllm，工作目录用 ~/work/vllm，单个 PR �
 
 ## 怎样选择更可能合并的贡献
 
+同时指定多个仓库时，主 agent 先给你一份《仓库 PR 审核与合并对比》。第一张表比较同一周新开的外部 PR，回答“两周内合并了多少、通常要等多久才有人正式评审”；第二张表解释本轮先做哪个候选、谁排队、什么时候重排。报告交付后才分配子 agent 或设备，并把实际分配写回同一文件。[查看报告模板](skills/reposcout/assets/仓库PR审核与合并对比.md) · [复算方法](skills/reposcout/references/repository-comparison.md) · [六仓库报告示例](skills/reposcout/references/repository-comparison-example.md)
+
 每个仓库有一名负责人，同时查两件事：领域里近期有哪些方法值得在这个仓库验证，维护者最近又接受或搁置了哪些同类改动。比如一篇论文提出新的调度策略，负责人会核对它是否适用于仓库当前实现，再看同模块的外部 PR 是否被要求补充特定负载下的延迟数据。两边的证据一起决定先做哪个实验。
 
 遇到一行看似写错的判断，RepoScout 会先追溯引入它的提交、上游讨论和回归测试。例如，边界条件用的是 `>` 还是 `>=`，要结合调用方能否传入该值、接口对相等情形的约定来判断。确认现版本能复现偏差后，再用相同用例检验修正，同时复测原判断保护的场景。若行为符合设计，就关闭误报。[疑似缺陷的验证方法](skills/reposcout/references/exploration.md#核实疑似缺陷)
