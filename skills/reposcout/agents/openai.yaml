@@ -1,0 +1,4 @@
+interface:
+  display_name: "RepoScout"
+  short_description: "Coordinate repository experiments and prepare PRs for human review"
+  default_prompt: "使用 $reposcout 帮我探索指定 GitHub 仓库，协调实验资源，并准备可供审核的 PR。"
